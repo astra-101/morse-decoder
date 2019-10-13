@@ -39,6 +39,20 @@ const MORSE_TABLE = {
 
 function decode(expr) {
     // write your solution here
+var numbers = expr.match(/.{1,10}/g);
+var text;
+var numb=[];
+for (a=0 ; a<numbers.length; a++){
+    numb[a]=parseInt(numbers[a], 10)
+    if (isNaN(numb[a])){ numb[a]=" "}
+    else {numb[a]=numb[a].toString()}
+numb[a] = numb[a].replace(/10/g, ".").replace(/11/g,"-")
+if ( MORSE_TABLE[numb[a]]!==undefined) { numb[a]=MORSE_TABLE[numb[a]]}
+
+}
+text = numb.join('');
+return text
+
 }
 
 module.exports = {
